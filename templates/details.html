@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{interface}}</title>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+<table>
+  <tr>
+    <th>Switch</th>
+    <th>Interface</th>
+    <th>Description</th>
+	<th>State</th>
+  </tr>
+  <tr>
+    <td>{{ result["Switch_name"] }}</td>
+    <td>{{ result["Interface_Name"] }}</td>
+    <td>{{ result["Description"] }}</td>
+	<td>{{ result["State"] }}</td>
+  </tr
+</body>
+</html>
+
