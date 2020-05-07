@@ -1,8 +1,9 @@
+
 from flask import Flask, request, render_template, jsonify, json
 from flask_pymongo import PyMongo
 import bson
 from bson import json_util
-import db_operations 
+import db_operations
 
 
 ### Calling the mongodb operations module
@@ -11,8 +12,8 @@ db_operations.createMongodb()
 
 app = Flask("__name__",template_folder="templates")
 app.config['TEMPLATES_AUTO_RELOAD'] = True
-app.config['MONGO_URI'] = "mongodb://svetlana:cisco123@localhost:27017/Device_Configuration"
-mongo = PyMongo(app) 
+app.config['MONGO_URI'] = "mongodb://cisco:cisco123@localhost:27017/Device_Configuration"
+mongo = PyMongo(app)
 json.dumps=json_util.dumps
 
 
@@ -27,7 +28,7 @@ def interfaces_html(switch):
 def interfaces_json(switch):
     query=mongo.db.Interfaces.find({"Switch_name":switch})
     return jsonify(query),200
-    
+
 @app.route("/<switch>/<path:interface>/details.html", methods=["GET"])
 def interface_details_html(switch,interface):
     result=mongo.db.Interfaces.find_one({"Switch_name":switch,"Interface_Name":interface})
@@ -37,7 +38,7 @@ def interface_details_html(switch,interface):
 def interface_details_json(switch,interface):
     query=mongo.db.Interfaces.find_one({"Switch_name":switch,"Interface_Name":interface})
     return jsonify(query),200
-    
+
 @app.route("/<switch>/<ObjectId:_id>", methods=["GET","PATCH"])
 def update_description_state(_id,switch):
     payload={"Description":"my cool interface" , "State":"up"}

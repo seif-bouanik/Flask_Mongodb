@@ -10,8 +10,8 @@ def createMongodb():
         db= client["Device_Configuration"]
         collection= db["Interfaces"]
         collection.delete_many({}) #Reset documents with every execution
-        db.command("updateUser", "svetlana", pwd="cisco123", roles=[{"role":"readWrite","db":"Device_Configuration"}])
- 
+        db.command("updateUser", "cisco", pwd="cisco123", roles=[{"role":"readWrite","db":"Device_Configuration"}])
+
         int1 = {
         "Switch_name":"switch1",
         "Interface_Name":"int g1/0",
@@ -30,5 +30,5 @@ def createMongodb():
         "Description":"Connected to printer CX2",
         "State":"up",
         }
-        
+
         collection.insert_many([int1,int2,int3])
